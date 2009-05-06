@@ -23,7 +23,7 @@ help:
 	-@echo Available commands:
 	-@echo install zip scp upgrade
 
-zip: upgrade
+zip:
 	-@echo zip
 	-@test ! -d TOM || rm -r TOM
 	-@cp -rp ${TARGET} .

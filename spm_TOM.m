@@ -4,7 +4,9 @@ function spm_TOM
 % Christian Gaser
 % $Id$
 
-SPMid = spm('FnBanner',mfilename,'v1.04');
+rev = '$Rev: 167 $';
+
+SPMid = spm('FnBanner',mfilename,rev);
 [Finter,Fgraph,CmdLine] = spm('FnUIsetup','Template-O-Matic');
 spm_help('!ContextHelp',mfilename);
 spm_help('!Disp','TOM.man','',Fgraph,'      Template-O-Matic toolbox for SPM8');

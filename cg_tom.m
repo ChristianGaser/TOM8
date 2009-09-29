@@ -6,14 +6,19 @@ function varargout = cg_tom(cmd, job)
 
 linfun = inline('fprintf([''%-40s%s''],x,[repmat(sprintf(''\b''),1,40)])','x');
 
+modi = {'GM','WM','CSF','BKG1','BKG2','BKG3','T1'};
+
 if strcmpi(cmd,'estimate')
   % initialise output argument
   out = struct('tommat',{{''}},'betas',{{''}});
   GM   = job.data.GM;
   WM   = job.data.WM;
   CSF  = job.data.CSF;
+  BKG1 = job.data.BKG1;
+  BKG2 = job.data.BKG2;
+  BKG3 = job.data.BKG3;
   T1   = job.data.T1;
-  data = {GM, WM, CSF, T1};
+  data = {GM, WM, CSF, BKG1, BKG2, BKG3, T1};
 
   age     = job.age.c;
   gender  = job.gender.c;
@@ -28,16 +33,15 @@ if strcmpi(cmd,'estimate')
     case 'poly3', ageDegree = 3;
   end
 
-  modi = {'GM','WM','CSF','T1'};
-  n_modi = zeros(1,4);
-  for i=1:4
+  n_modi = zeros(1,7);
+  for i=1:7
     n_modi(i) = length(data{i});
     % correct if entry is empty
     if strcmp(data{i},''), n_modi(i) = 0; end
   end
 
   % check for same file numbers
-  if any(diff(n_modi(find(n_modi>0)))), error('Number of GM/WM/CSF/T1 images differ.'); end
+  if any(diff(n_modi(find(n_modi>0)))), error('Number of GM/WM/CSF/BKG?/T1 images differ.'); end
   % check for correct number of covariates
   if n_modi(1)~=size(age,1), error('Number of age values differ from number of images.'); end
   if n_modi(1)~=size(gender,1), error('Number of gender values differ from number of images.'); end
@@ -72,8 +76,9 @@ if strcmpi(cmd,'estimate')
 
   % remove old files
   files = {'^T1_beta_.{2}\..{3}$','^GM_beta_.{2}\..{3}$','^WM_beta_.{2}\..{3}$',...
-          '^CSF_beta_.{2}\..{3}$','^TOM\..{3}$','^T1_Template_Age',...
-          '^GM_Template_Age','^WM_Template_Age','^CSF_Template_Age'};
+          '^CSF_beta_.{2}\..{3}$','^BKG.{1}_beta_.{2}\..{3}$','^TOM\..{3}$',...
+          '^T1_Template_Age','^GM_Template_Age','^WM_Template_Age',...
+          '^CSF_Template_Age','^BKG.{1}_Template_Age'};
  
   for i=1:length(files)
     j = spm_select('List',odir,files{i});
@@ -146,7 +151,7 @@ if strcmpi(cmd,'estimate')
   
 elseif strcmpi(cmd,'create')
   % initialise output - does not pass on gif filename
-  out = struct('templates',{{''}});
+  out = struct('templates',{{''}},'tpm',{{''}});
   
   newage = job.age.c;
   odir = job.odir{1};
@@ -206,8 +211,6 @@ elseif strcmpi(cmd,'create')
     if is_gender, newgender = mean(newgender); end
     for i = 1:n_newcovs, newcovs(i).c = mean(newcovs(i).c); end
   end
-
-  modi = {'GM','WM','CSF','T1'};
 
   % vector of beta which will be used for template creation
   use_beta = 1:ageDegree + 2 + n_newcovs;
@@ -315,11 +318,12 @@ elseif strcmpi(cmd,'create')
     if save_gif
       gif_array = [gif_array img_array{i}];
     end
+    
     % calculate mean of all ages
     if isfield(job.template,'matched')
-      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '-' num2str(newage(end)) '.img']);
+      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '-' num2str(newage(end)) '.nii']);
     else
-      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '.img']);            
+      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '.nii']);            
     end
     VO.fname = out.templates{i};
     template_sum{i} = template_sum{i}/n_newage;
@@ -331,6 +335,30 @@ elseif strcmpi(cmd,'create')
     [pth fnm ext] = spm_fileparts(VO.fname);
     matfile = fullfile(pth, [fnm '.mat']);
     save(matfile, 'M', 'mat');    
+  end
+  
+  % check that all 6 tissue classes were estimated to write TPM
+  if ~any(n_modi(1:6)==0) 
+    % calculate mean of all ages
+    if isfield(job.template,'matched')
+      out.tpm = fullfile(odir,['TPM_Age' num2str(newage(1)) '-' num2str(newage(end)) '.nii']);
+    else
+      out.tpm = fullfile(odir,['TPM_Age' num2str(newage(1)) '.nii']);            
+    end
+    VO.fname = out.tpm;
+
+    TPM      = nifti;
+    TPM.dat  = file_array(out.tpm,[size(template) 6], [spm_type('uint8') spm_platform('bigend')], 0, 1/255, 0);
+    TPM.mat  = VO.mat;
+    TPM.mat0 = VO.mat;
+    create(TPM);
+    
+    all_sum = template_sum{1}+template_sum{2}+template_sum{3}+template_sum{4}+template_sum{5}+template_sum{6}+eps;
+    for i=1:6
+      template_sum{i} = template_sum{i}./all_sum;
+      TPM.dat(:,:,:,1) = template_sum{i};
+    end
+  
   end
 
   % save combined gif image for all modalities
@@ -370,7 +398,6 @@ elseif strcmpi(cmd,'getinfo')
   end
 
   % print avaliable modi
-  modi = {'GM','WM','CSF','T1'};
   ind = find(n_modi>0);
   fprintf('Modi:\t');
   fprintf('%s ',modi{ind});

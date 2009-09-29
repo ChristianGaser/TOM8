@@ -9,7 +9,7 @@ TARGET=/Users/gaser/spm/spm8/toolbox/TOM
 
 STARGET=141.35.200.101:/Applications/xampp/htdocs/
 
-FILES=TOM.man cg_config_tom.m cg_tom.m spm_TOM.m Install.txt Changes
+FILES=TOM.man tbx_cfg_tom.m cg_tom.m spm_TOM.m Install.txt Changes
 
 ZIPFILE=TOM8_$(VERSION).zip
 

@@ -4,6 +4,10 @@
 %  http://irc.cchmc.org/software/pedbrain.php
 %  http://dbm.neuro.uni-jena.de/software/tom/
 %  
+%  Christian Gaser
+%  Structural Brain Mapping Group, Department of Psychiatry
+%  University of Jena, Germany
+%
 %  Marko Wilke
 %  Department of Pediatric Neurology and Developmental Medicine
 %  University of Tuebingen, Germany
@@ -11,10 +15,6 @@
 %  Scott Holland, Mekibib Altaye
 %  Imaging Research Center 
 %  Cincinnati Children's Hospital Medical Center, USA
-%
-%  Christian Gaser
-%  Structural Brain Mapping Group, Department of Psychiatry
-%  University of Jena, Germany
 % __________________________________________________________________________
 % Christian Gaser christian.gaser@uni-jena.de
 % $Id$
@@ -31,7 +31,7 @@
 % any given group of subjects. The toolbox offers two options:
 %
 %  (1) to create pediatric templates (T1) and tissue maps (GM, WM, and CSF)  
-%      based on the objective 1 NIH data (n = 404), in the age range of 5-18 
+%      based on the objective 1 NIH data (n = 394), in the age range of 5-18 
 %      years, or
 %  (2) to assess a new reference population with regard to your variables of  
 %      interest.

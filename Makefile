@@ -9,7 +9,7 @@ TARGET=/Users/gaser/spm/spm8/toolbox/TOM
 
 STARGET=141.35.200.101:/Applications/xampp/htdocs/
 
-FILES=TOM.man tbx_cfg_tom.m cg_tom.m spm_TOM.m Install.txt Changes
+FILES=TOM.man tbx_cfg_tom.m cg_tom.m spm_TOM.m Contents.m Install.txt Changes
 
 ZIPFILE=TOM8_$(VERSION).zip
 
@@ -21,9 +21,16 @@ install:
 
 help:
 	-@echo Available commands:
-	-@echo install zip scp upgrade
+	-@echo install zip scp update
 
-zip:
+update:
+	-@svn update
+	-@echo '% __________________________________________________________________________' > Contents.m
+	-@echo '% Template-O-Matic Toolbox' >> Contents.m
+	-@echo '% Version ' ${VERSION} ' (TOM8) ' ${DATE} >> Contents.m
+	-@cat Contents_info.txt >> Contents.m
+
+zip: update
 	-@echo zip
 	-@test ! -d TOM || rm -r TOM
 	-@cp -rp ${TARGET} .

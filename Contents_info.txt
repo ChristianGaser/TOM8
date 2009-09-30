@@ -1,0 +1,18 @@
+%
+%  http://dbm.neuro.uni-jena.de/software/tom/
+% __________________________________________________________________________
+% Copyright (C) 2009 Christian Gaser christian.gaser@uni-jena.de
+%
+% $Id: Contents_info.txt 160 2009-09-09 15:31:37Z gaser $
+% ==========================================================================
+% Description
+% ==========================================================================
+% The TOM toolbox takes a radically new approach towards providing reference 
+% data, based on imaging data from the NIH study of normal brain development  
+% (http://www.bic.mni.mcgill.ca/nihpd/info/). Using the general linear model,  
+% we statistically isolate the influence of external variables of interest on  
+% brain structure, allowing us to generate high-quality matched templates for  
+% any given group of subjects. 
+% It is developed by Christian Gaser, Marko Wilke, Scott Holland, and
+% Mekibib Altaye and is available to the scientific community under the terms
+% of the GNU General Public License.

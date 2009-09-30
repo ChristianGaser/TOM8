@@ -321,9 +321,9 @@ elseif strcmpi(cmd,'create')
     
     % calculate mean of all ages
     if isfield(job.template,'matched')
-      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '-' num2str(newage(end)) '.nii']);
+      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '-' num2str(newage(end)) '.img']);
     else
-      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '.nii']);            
+      out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '.img']);            
     end
     VO.fname = out.templates{i};
     template_sum{i} = template_sum{i}/n_newage;

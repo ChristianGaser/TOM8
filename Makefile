@@ -11,7 +11,7 @@ STARGET=141.35.200.101:/Applications/xampp/htdocs/
 
 FILES=TOM.man tbx_cfg_tom.m cg_tom.m spm_TOM.m Contents.m Install.txt Changes
 
-ZIPFILE=TOM8_$(VERSION).zip
+ZIPFILE=TOM8_r$(VERSION).zip
 
 install:
 	-@echo install

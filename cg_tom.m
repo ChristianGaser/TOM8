@@ -119,8 +119,7 @@ if strcmpi(cmd,'estimate')
       P = strvcat(P,data{i}{j});
     end
     V = spm_vol(P);
-
-    % scale to a mean of 0.5 for t1 images
+    % scale to a mean of 0.5 for T1 images
     if strcmp(modi{i},'T1')
       fprintf('Scale T1 images to mean of 0.5\n');
       for j = 1:n_modi(i)
@@ -326,19 +325,24 @@ elseif strcmpi(cmd,'create')
       out.templates{i} = fullfile(odir,[modi{i} '_Template_Age' num2str(newage(1)) '.img']);            
     end
     VO.fname = out.templates{i};
-    template_sum{i} = template_sum{i}/n_newage;
-    spm_write_vol(VO,template_sum{i});
     
-    % also save mat-file to use theses images with older spm-versions
-    % this idea is based on a script by Ged Ridgeway
-    mat = VO.mat; M = mat;
-    [pth fnm ext] = spm_fileparts(VO.fname);
-    matfile = fullfile(pth, [fnm '.mat']);
-    save(matfile, 'M', 'mat');    
+    % write multiple files if options was selected and always for T1 (i==7)
+    if (isfield(job.priors,'multiprior') & (i<4)) | (i==7)
+      template_sum{i} = template_sum{i}/n_newage;
+      spm_write_vol(VO,template_sum{i});
+    
+      % also save mat-file to use theses images with older spm-versions
+      % this idea is based on a script by Ged Ridgeway
+      mat = VO.mat; M = mat;
+      [pth fnm ext] = spm_fileparts(VO.fname);
+      matfile = fullfile(pth, [fnm '.mat']);
+      save(matfile, 'M', 'mat');    
+    end
   end
   
   % check that all 6 tissue classes were estimated to write TPM
-  if ~any(n_modi(1:6)==0) 
+  if ~any(n_modi(1:6)==0) & isfield(job.priors,'singleprior')
+
     % calculate mean of all ages
     if isfield(job.template,'matched')
       out.tpm = fullfile(odir,['TPM_Age' num2str(newage(1)) '-' num2str(newage(end)) '.nii']);
@@ -356,7 +360,7 @@ elseif strcmpi(cmd,'create')
     all_sum = template_sum{1}+template_sum{2}+template_sum{3}+template_sum{4}+template_sum{5}+template_sum{6}+eps;
     for i=1:6
       template_sum{i} = template_sum{i}./all_sum;
-      TPM.dat(:,:,:,1) = template_sum{i};
+      TPM.dat(:,:,:,i) = template_sum{i};
     end
   
   end
@@ -429,10 +433,10 @@ for j=1:VY(1).dim(3),
 
   % Load slice j from all images
   for i=1:n
-    tmp = spm_slice_vol(VY(i),M,VY(1).dim(1:2),[1 0]);
+    tmp = spm_slice_vol(VY(i),M,VY(1).dim(1:2),1);
+    tmp(find(isnan(tmp))) = 0;
     Y(:,i) = tmp(:);
   end
-  
   pXY = pKX*Y';
   pXY = reshape(pXY',[VY(1).dim(1:2) size(pKX,1)]);
   beta(:,:,j,:) = pXY;

@@ -7,7 +7,7 @@
 % ==========================================================================
 % Description
 % ==========================================================================
-% The TOM toolbox takes a radically new approach towards providing reference 
+% The TOM8 toolbox takes a radically new approach towards providing reference 
 % data, based on imaging data from the NIH study of normal brain development  
 % (http://www.bic.mni.mcgill.ca/nihpd/info/). Using the general linear model,  
 % we statistically isolate the influence of external variables of interest on  

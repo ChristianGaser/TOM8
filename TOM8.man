@@ -17,7 +17,7 @@
 %  Cincinnati Children's Hospital Medical Center, USA
 % __________________________________________________________________________
 % Christian Gaser christian.gaser@uni-jena.de
-% $Id: TOM.man 7 2009-09-30 14:25:20Z gaser $
+% $Id$
 % 
 % ==========================================================================
 % Description
@@ -79,4 +79,4 @@
 % preceeding column.
 %
 % __________________________________________________________________________
-%                                                Christian Gaser 2009/05/05
+%                                                Christian Gaser 2010/10/05

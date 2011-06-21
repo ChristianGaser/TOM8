@@ -2,7 +2,7 @@ function job = cg_cfg_tom8
 % Configuration file for Template-O-Matic toolbox
 %_______________________________________________________________________
 % Christian Gaser
-% $Id: tbx_cfg_tom8.m 7 2009-09-30 14:25:20Z gaser $
+% $Id$
 
 addpath(fullfile(spm('dir'),'toolbox','TOM8'));
 

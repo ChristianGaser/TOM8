@@ -2,7 +2,7 @@ function varargout = cg_tom8(cmd, job)
 % Execution file for TOM8
 %_______________________________________________________________________
 % Christian Gaser
-% $Id: cg_tom8.m 7 2009-09-30 14:25:20Z gaser $
+% $Id$
 
 linfun = inline('fprintf([''%-40s%s''],x,[repmat(sprintf(''\b''),1,40)])','x');
 

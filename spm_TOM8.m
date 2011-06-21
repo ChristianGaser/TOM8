@@ -2,9 +2,9 @@ function spm_TOM8
 % TOM8 Toolbox wrapper to call TOM8 functions
 %_______________________________________________________________________
 % Christian Gaser
-% $Id: spm_TOM8.m 7 2009-09-30 14:25:20Z gaser $
+% $Id$
 
-rev = '$Rev: 167 $';
+rev = '$Rev$';
 
 SPMid = spm('FnBanner',mfilename,rev);
 [Finter,Fgraph,CmdLine] = spm('FnUIsetup','Template-O-Matic');

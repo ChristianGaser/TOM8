@@ -5,7 +5,7 @@ This is NIH1_Age_Gender, regression parameters obtained from a sample of healthy
 The rationale, approach, and many more details can be found in our accompanying manuscript (Wilke M, Holland SK, Altaye M, Gaser C: Template-O-Matic: A toolbox for creating customized pediatric templates, available online at http://dx.doi.org/10.1016/j.neuroimage.2008.02.056). This manuscript also contains more information on the processing stream applied to the data. This data is made available to the scientific community to explore the effects of using pediatric as opposed to adult brain data when doing neuroimaging studies in children. As laid out in the license agreement, the authors expect you to include a citation or acknowledgment if you present or publish results obtained using data from this distribution. Please also note our disclaimer!
 
 
-Further information about the project as a whole can also be found on the website of the Imaging Research Center of Cincinnati Children's Hospital Medical Center at http://www.irc.cchmc.org (follow Software, Pediatric Brain Templates) and on the Structural Brain Mapping Group's website at http://dbm.neuro.uni-jena.de/software/tom/
+Further information about the project as a whole can also be found on the website of the Imaging Research Center of Cincinnati Children's Hospital Medical Center at http://www.irc.cchmc.org (follow Software, Pediatric Brain Templates) and on the Structural Brain Mapping Group's website at https://neuro-jena.github.io/software.html#tom
 
 
 ***** Data *****

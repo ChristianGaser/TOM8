@@ -1,5 +1,5 @@
 %
-%  http://dbm.neuro.uni-jena.de/software/tom/
+%  https://neuro-jena.github.io/software.html#tom
 % __________________________________________________________________________
 % Copyright (C) 2009 Christian Gaser christian.gaser@uni-jena.de
 %

@@ -2,7 +2,7 @@
 % __________________________________________________________________________
 %  Template-O-Matic Toolbox
 %  http://irc.cchmc.org/software/pedbrain.php
-%  http://dbm.neuro.uni-jena.de/software/tom/
+%  https://neuro-jena.github.io/software.html#tom
 %  
 %  Christian Gaser
 %  Structural Brain Mapping Group, Department of Psychiatry

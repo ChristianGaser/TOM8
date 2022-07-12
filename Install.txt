@@ -1,5 +1,5 @@
 Template-O-Matic Toolbox for SPM8
-Christian Gaser | christian.gaser@uni-jena.de | dbm.neuro.uni-jena.de/tom
+Christian Gaser | christian.gaser@uni-jena.de | https://neuro-jena.github.io/software.html#tom
 
 ======================================================================
 Installation

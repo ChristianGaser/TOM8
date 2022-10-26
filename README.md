@@ -18,7 +18,7 @@
 
 
 Description
-==========================================================================
+--------------------------------------------------------------------------
 
 The TOM toolbox takes a radically new approach towards providing reference 
 data, based on imaging data from the NIH study of normal brain development  
@@ -49,7 +49,7 @@ website at http://irc.cchmc.org/software/pedbrain.php.
 We will ask you to complete a registration form before downloading.
 
 Template creation method
-==========================================================================
+--------------------------------------------------------------------------
 
 Two general approaches seem feasible to construct appropriate reference data.
 First, the average age, gender, etc. is calculated based on the supplied input
@@ -65,7 +65,7 @@ SPM versions. SPM5/8 (and all other nifti-based software) will simply ignore the
 mat-file.
 
 Order of polynomial regression
-==========================================================================
+--------------------------------------------------------------------------
 
 Age can be modeled as polynomial regression with up to third order terms.
 The simplest model is a linear regression (which is not recommended).

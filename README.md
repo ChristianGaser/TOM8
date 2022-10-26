@@ -1,22 +1,30 @@
 #TOM8
 
  Template-O-Matic Toolbox
+ 
  http://irc.cchmc.org/software/pedbrain.php
+ 
  https://neuro-jena.github.io/software.html#tom
  
- Christian Gaser
+ Christian Gaser christian.gaser@uni-jena.de
+ 
  Structural Brain Mapping Group, Department of Psychiatry
+ 
  University of Jena, Germany
 
+ 
  Marko Wilke
+ 
  Department of Pediatric Neurology and Developmental Medicine
+ 
  University of Tuebingen, Germany
 
+ 
  Scott Holland, Mekibib Altaye
+ 
  Imaging Research Center 
+ 
  Cincinnati Children's Hospital Medical Center, USA
-__________________________________________________________________________
-Christian Gaser christian.gaser@uni-jena.de
 
 
 Description

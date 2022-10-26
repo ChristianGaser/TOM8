@@ -1,4 +1,6 @@
- Template-O-Matic Toolbox 
+ TOM8 Template-O-Matic Toolbox 
+ ==========================================================================
+
  http://irc.cchmc.org/software/pedbrain.php  
  https://neuro-jena.github.io/software.html#tom
  
